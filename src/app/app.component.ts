@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faker } from '@faker-js/faker';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'typing-angular';
-}
+  rdnText = faker.lorem.sentence();
+  win = false;
+  enteredChar = '';
+   
+  getChange(e: any) {
+    let val = e.target.value;
+    this.enteredChar = val;
+  }
+  getClass(letter: string, enteredLetter: string) {
+    if (!enteredLetter) {
+      return "noclass";
+    }
+    if (letter == enteredLetter) {
+      return "correct";
+    } else {
+      return "incorrect";
+    }
+    
+  }
+  
+  }
+
